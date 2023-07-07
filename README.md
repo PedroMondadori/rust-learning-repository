@@ -36,7 +36,8 @@ git clone https://github.com/PedroMondadori/rust-multithreaded-webserver
 ```
 
 Make sure you have Rust and Cargo installed on your system. You can install Rust by following the instructions provided on the official Rust website: https://www.rust-lang.org/tools/install
-Usage
+
+## Usage
 
 Each chapter folder contains separate Rust projects. You can navigate to a specific chapter and explore the code and exercises within it. Feel free to modify the code, experiment, and run the examples on your local machine.
 
