@@ -30,10 +30,11 @@ The repository is organized into chapters, with each chapter containing its own 
 
 To get started with this repository, you can clone it to your local machine using the following command:
 
+```
+git clone --recurse-submodules https://github.com/PedroMondadori/rust-multithreaded-webserver
+```
 
-```
-git clone https://github.com/PedroMondadori/rust-multithreaded-webserver
-```
+Since Chapters 12 and 20 are separate projects, they reside in their own git repositories. Thus, this command will make sure that you clone the main repository along with all of its submodules.
 
 Make sure you have Rust and Cargo installed on your system. You can install Rust by following the instructions provided on the official Rust website: https://www.rust-lang.org/tools/install
 
