@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "smart_pointers",
+    "list",
+]
