@@ -3,4 +3,5 @@
 members = [
     "smart_pointers",
     "list",
+    "references",
 ]
