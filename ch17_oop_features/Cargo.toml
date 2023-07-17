@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "main",
+    "oop_example",
+    "gui",
+    "blog",
+]
