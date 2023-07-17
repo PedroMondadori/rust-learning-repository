@@ -1,30 +1,20 @@
-use std::ops::Deref;
+//
+// Here is a recap of the reasons to choose Box<T>, Rc<T>, or RefCell<T>:
+//
+// - Rc<T> enables multiple owners of the same data; Box<T> and RefCell<T> have single owners.
+//
+// - Box<T> allows immutable or mutable borrows checked at compile time;
+// Rc<T> allows only immutable borrows checked at compile time;
+// RefCell<T> allows immutable or mutable borrows checked at runtime.
+//
+// - Because RefCell<T> allows mutable borrows checked at runtime,
+// you can mutate the value inside the RefCell<T> even when the RefCell<T> is immutable.
+//
 
-pub struct MyBox<T>(T);
-
-impl<T> MyBox<T> {
-    pub fn new(x: T) -> MyBox<T> {
-        return MyBox(x);
-    }
-}
-
-impl<T> Deref for MyBox<T> {
-    type Target = T;
-
-    fn deref(&self) -> &Self::Target {
-        return &self.0;
-    }
-}
-
-pub struct CustomSmartPointer {
-    pub data: String,
-}
-
-impl Drop for CustomSmartPointer {
-    fn drop(&mut self) {
-        println!("Dropping CustomSmartPointer with data \"{}\"", self.data);
-    }
-}
+pub mod custom_smart_pointers;
+pub mod mutability_pattern;
+pub mod reference_counting;
+pub mod cycles;
 
 pub fn coercion_deref(name: &str) {
     println!("Coecion Deref, {name}");
@@ -32,8 +22,6 @@ pub fn coercion_deref(name: &str) {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn int_ref() {
         let x = 5;
@@ -47,15 +35,6 @@ mod tests {
     fn box_as_ref() {
         let x = 5;
         let y = Box::new(x);
-
-        assert_eq!(5, x);
-        assert_eq!(5, *y);
-    }
-
-    #[test]
-    fn mybox_as_ref() {
-        let x = 5;
-        let y = MyBox::new(x);
 
         assert_eq!(5, x);
         assert_eq!(5, *y);
